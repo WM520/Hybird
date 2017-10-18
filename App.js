@@ -38,7 +38,12 @@ export default class App extends Component<{}> {
   }
 
   componentDidMount(){
-    this.subscription = calendarManagerEmitter.addListener('SpotifyHelper',(data)=>alert(data));
+    this.subscription = calendarManagerEmitter.addListener('SpotifyHelper',(data)=>this.initData(data));
+  }
+
+  initData(data) {
+    // ajax 请求
+    alert(data);
   }
 }
 
