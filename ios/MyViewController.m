@@ -8,6 +8,7 @@
 
 #import "MyViewController.h"
 #import "ViewController2.h"
+#import "NotiClass.h"
 
 @interface MyViewController ()
 <UITableViewDelegate,
@@ -43,8 +44,9 @@ UITableViewDataSource>
 //    [self presentViewController:vc animated:YES completion:^{
 //
 //    }];
-  [self.navigationController pushViewController:vc animated:YES];
-  NSLog(@"11111");
+//  [self.navigationController pushViewController:vc animated:YES];
+//  NSLog(@"11111");
+  RNIOSExportJsToReact(@"wangmiao");
 }
 
 

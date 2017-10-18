@@ -12,12 +12,18 @@ import {
   View,
   NativeModules,
   findNodeHandle,
-  NativeAppEventEmitter
+  NativeAppEventEmitter,
+  NativeEventEmitter
 } from 'react-native';
 
 import MyView from  './MyView';
 const MyViewManager = NativeModules.MyViewManager;
-
+const  NotiClass = NativeModules.NotiClass;
+const calendarManagerEmitter = new NativeEventEmitter(NotiClass);
+// const subscription = calendarManagerEmitter.addListener(
+//   'EventReminder',
+//   (reminder) => console.log(reminder.name)
+// );
 export default class App extends Component<{}> {
   render() {
     return (
@@ -26,6 +32,13 @@ export default class App extends Component<{}> {
         </MyView>
       </View>
     );
+  }
+  componentWillUnmount() {
+    subscription.remove();
+  }
+
+  componentDidMount(){
+    this.subscription = calendarManagerEmitter.addListener('SpotifyHelper',(data)=>alert(data));
   }
 }
 
